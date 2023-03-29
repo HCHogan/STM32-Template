@@ -104,12 +104,17 @@ Discarded input sections
  .debug_frame   0x0000000000000000      0x320 ./Start/core_cm3.o
  .ARM.attributes
                 0x0000000000000000       0x2d ./Start/core_cm3.o
- .text          0x0000000000000000        0x0 ./User/main.o
+ .text          0x0000000000000000       0x10 ./User/main.o
  .data          0x0000000000000000        0x0 ./User/main.o
  .bss           0x0000000000000000        0x0 ./User/main.o
- .debug_line    0x0000000000000000        0x0 ./User/main.o
- .debug_str     0x0000000000000000       0x8b ./User/main.o
+ .debug_info    0x0000000000000000       0xdc ./User/main.o
+ .debug_abbrev  0x0000000000000000       0x99 ./User/main.o
+ .debug_aranges
+                0x0000000000000000       0x20 ./User/main.o
+ .debug_line    0x0000000000000000      0x128 ./User/main.o
+ .debug_str     0x0000000000000000      0x15e ./User/main.o
  .comment       0x0000000000000000       0x1f ./User/main.o
+ .debug_frame   0x0000000000000000       0x2c ./User/main.o
  .ARM.attributes
                 0x0000000000000000       0x2d ./User/main.o
  .text          0x0000000000000000       0x5c ./User/stm32f10x_it.o
@@ -1473,6 +1478,7 @@ RCC_APB1PeriphResetCmd                            ./Library/src/stm32f10x_rcc.o
                                                   ./Library/src/stm32f10x_pwr.o
                                                   ./Library/src/stm32f10x_tim.o
 RCC_APB2PeriphClockCmd                            ./Library/src/stm32f10x_rcc.o
+                                                  ./User/main.o
 RCC_APB2PeriphResetCmd                            ./Library/src/stm32f10x_rcc.o
                                                   ./Library/src/stm32f10x_adc.o
                                                   ./Library/src/stm32f10x_gpio.o
@@ -1881,7 +1887,8 @@ exit                                              /usr/lib/gcc/arm-none-eabi/12.
                                                   /usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 fflush                                            /usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(libc_a-fflush.o)
 hardware_init_hook                                /usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
-main                                              /usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
+main                                              ./User/main.o
+                                                  /usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 malloc                                            /usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(libc_a-__atexit.o)
 memset                                            /usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(libc_a-memset.o)
                                                   /usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc_nano.a(libc_a-findfp.o)
