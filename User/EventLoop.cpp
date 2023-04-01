@@ -1,23 +1,30 @@
 #include "EventLoop.hpp"
 #include "OLED.h"
 #include "Timer.h"
+#include "PWM.h"
 #include <vector>
 
 std::vector<int> a;
+
+uint8_t i;
 
 extern uint16_t Num;
 
 void EventLoopCpp() {
 
 	OLED_Init();
-	Timer_Init();
-
-	OLED_ShowString(1, 1, "Num:");
-	OLED_ShowString(2, 1, "CNT:");
+	PWM_Init();
 
 	while(1) {
-		OLED_ShowNum(1, 5, Num, 5);
-		OLED_ShowNum(2, 5, TIM_GetCounter(TIM2), 5);
+		for(i = 0; i <= 100; i++) {
+			PWM_SetCompare1(i);
+			Delay_ms(10);
+		}
+		for(i = 0; i <= 100; i++) {
+			PWM_SetCompare1(100 - i);
+			Delay_ms(10);
+		}
+
 	}
 }
 
