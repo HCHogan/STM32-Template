@@ -1,4 +1,5 @@
 #include "stm32f10x.h"
+#include "stm32f10x_tim.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -34,6 +35,7 @@ void IC_Init(void) {
 	TIM_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1;
 	TIM_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI;		// direct link
 	TIM_ICInit(TIM3, &TIM_ICInitStructure);
+	TIM_PWMIConfig(TIM3, &TIM_ICInitStructure);					// config the other channel automatically
 
 	TIM_SelectInputTrigger(TIM3, TIM_TS_TI1FP1);
 	TIM_SelectSlaveMode(TIM2, TIM_SlaveMode_Reset);
@@ -43,6 +45,10 @@ void IC_Init(void) {
 
 uint32_t IC_GetFreq(void) {
 	return 1000000 / TIM_GetCapture1(TIM3);
+}
+
+uint32_t IC_GetDuty(void) {
+	return (TIM_GetCapture2(TIM3) + 1) * 100 / (TIM_GetCapture1(TIM3) + 1);
 }
 
 
