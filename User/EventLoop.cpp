@@ -3,9 +3,12 @@
 #include "Timer.h"
 #include "Motor.h"
 #include "Key.h"
+#include "vector"
 
 uint8_t keyNum;
 int8_t speed;
+
+std::vector<int> a;
 
 void EventLoopCpp() {
 
