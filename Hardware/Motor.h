@@ -1,5 +1,5 @@
-#ifndef __PWM_H
-#define __PWM_H
+#ifndef __MOTOR_H
+#define __MOTOR_H
 
 #include "stm32f10x.h"
 
@@ -8,8 +8,9 @@ extern "C"
 {
 #endif
 
-void PWM_Init(void);
-void PWM_SetCompare3(uint16_t);
+
+void Motor_Init(void);
+void Motor_SetSpeed(int8_t);
 
 
 #ifdef __cplusplus

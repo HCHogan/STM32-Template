@@ -1,30 +1,28 @@
 #include "EventLoop.hpp"
 #include "OLED.h"
 #include "Timer.h"
-#include "PWM.h"
-#include <vector>
+#include "Motor.h"
+#include "Key.h"
 
-std::vector<int> a;
-
-uint8_t i;
-
-extern uint16_t Num;
+uint8_t keyNum;
+int8_t speed;
 
 void EventLoopCpp() {
 
 	OLED_Init();
-	PWM_Init();
+	Motor_Init();
+	Key_Init();
+	Motor_SetSpeed(-100);
+	OLED_ShowString(1, 1, "Speed: ");
 
 	while(1) {
-		for(i = 0; i <= 100; i++) {
-			PWM_SetCompare1(i);
-			Delay_ms(10);
+		keyNum = Key_GetNum();
+		if(keyNum == 1) {
+			speed += 20;
+			if(speed > 100) speed = -100;
 		}
-		for(i = 0; i <= 100; i++) {
-			PWM_SetCompare1(100 - i);
-			Delay_ms(10);
-		}
-
+		Motor_SetSpeed(speed);
+		OLED_ShowSignedNum(1, 7, speed, 3);
 	}
 }
 
