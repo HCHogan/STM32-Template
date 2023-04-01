@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/hank/Development/STM32Projs/6-4-1",
+            "binaryPath": "/home/hank/Development/STM32Projs/6-4-1/STM32-Template.elf",
+            "binaryArgs": []
+        }
+    ]
+}
