@@ -50,8 +50,13 @@ void PWM_Init(void) {
 	
 }
 
-void PWM_SetCompare1(uint16_t Compare) {
-	TIM_SetCompare1(TIM2, Compare);
+void PWM_SetCompare1(uint16_t compare) {
+	TIM_SetCompare1(TIM2, compare);
+}
+
+void PWM_SetPrescaler(uint16_t prescaler) {
+	// shadow register enable or not
+	TIM_PrescalerConfig(TIM2, prescaler, TIM_PSCReloadMode_Immediate);
 }
 
 #ifdef __cplusplus

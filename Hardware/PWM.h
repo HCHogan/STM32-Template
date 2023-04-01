@@ -9,8 +9,8 @@ extern "C"
 #endif
 
 void PWM_Init(void);
-void PWM_SetCompare1(uint16_t);
-
+void PWM_SetCompare1(uint16_t compare);
+void PWM_SetPrescaler(uint16_t prescaler);
 
 #ifdef __cplusplus
 }
